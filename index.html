@@ -20,366 +20,192 @@
             --btn-purple: #7c4dff;
             --btn-orange: #ff9800;
             --btn-green: #4caf50;
-            --btn-blue: #2196f3;
-            --btn-red: #f44336;
-        }
+            --…
+[2:04 pm, 07/02/2026] Sandeep◡̈⃝Kashyap🕊: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Portal - PYQ</title>
 
-        body.light-theme {
-            --bg-color: #f4f6f8;
-            --header-bg: #303f9f;
-            --card-bg: #ffffff;
-            --text-main: #333333;
-            --text-muted: #555555;
-            --border-color: #dddddd;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; transition: background-color 0.3s, color 0.3s; }
-        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; }
-
-        /* --- HEADER SECTION --- */
-        header {
-            background-color: var(--header-bg);
-            padding: 20px;
-            padding-bottom: 50px;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-
-        /* Top Bar (Back Button & Theme Toggle) */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .icon-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 10px 14px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-        .icon-btn:hover { background: rgba(255,255,255,0.4); }
-        
-        /* Hidden by default, shown via JS when needed */
-        #back-btn { visibility: hidden; } 
-
-        .welcome-section h1 { font-size: 2.2rem; font-weight: 800; color: white; margin: 5px 0 20px 0; }
-        .welcome-section p { font-size: 1.1rem; color: rgba(255,255,255,0.9); letter-spacing: 1px; }
-
-        /* User Info Pill */
-        .info-pill {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 10px 20px;
-            border-radius: 50px;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            margin-top: 10px;
-        }
-        .info-pill span { color: #455a64; font-weight: 700; font-size: 0.85rem; margin: 0 5px; }
-        .info-pill span.divider { color: #cfd8dc; }
-
-        /* --- MAIN LAYOUT --- */
-        .container {
-            max-width: 1000px;
-            margin: -30px auto 0 auto; /* Overlap header slightly */
-            padding: 0 20px 40px 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* VIEWS (SPA Logic) */
-        .view-section { display: none; animation: fadeIn 0.4s ease; }
-        .view-section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- DASHBOARD STYLES --- */
-        .section-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin: 25px 0 15px 0; font-weight: 700; font-size: 1.3rem;
-        }
-
-        .grid-container {
-            display: grid;
-            gap: 15px;
-            grid-template-columns: 1fr 1fr; /* Mobile: 2 cols */
-        }/* Desktop View */
-        @media (min-width: 768px) {
-            .grid-container { grid-template-columns: repeat(4, 1fr); }
-            header { padding-bottom: 70px; }
-        }
-
-        .card {
-            display: flex; align-items: center; cursor: pointer;
-            color: white; padding: 15px 20px; border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-weight: 600;
-            position: relative; overflow: hidden;
-            text-decoration: none;
-        }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-
-        .card.horizontal i { font-size: 1.5rem; margin-right: 15px; }
-        .card.vertical { flex-direction: column; text-align: center; padding: 30px 10px; gap: 10px; }
-        .card.vertical i { font-size: 2.5rem; margin-bottom: 5px; }
-
-        /* Colors */
-        .bg-pink { background: var(--btn-pink); }
-        .bg-purple { background: var(--btn-purple); }
-        .bg-orange { background: var(--btn-orange); }
-        .bg-green { background: var(--btn-green); }
-        .bg-blue { background: var(--btn-blue); }
-        .bg-red { background: var(--btn-red); }
-
-        /* --- PYQ TABLE STYLES --- */
-        .table-wrapper {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 10px;
-            overflow-x: auto; /* Scrollable on mobile */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 1px solid var(--border-color);
-        }
-
-        table { width: 100%; border-collapse: collapse; min-width: 600px; }
-        th, td { padding: 12px 10px; text-align: center; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
-        th { background-color: rgba(33, 150, 243, 0.1); color: var(--btn-blue); font-weight: 700; }
-        td:nth-child(3) { text-align: left; font-weight: 600; min-width: 180px; } /* Course Title */
-        
-        .upload-btn-sm {
-            background: var(--btn-blue); color: white; padding: 6px 12px;
-            border-radius: 20px; font-size: 0.75rem; cursor: pointer; border: none;
-        }
-        .upload-btn-sm:hover { background: #1976d2; }
-
-        /* --- UPLOAD PAGE STYLES --- */
-        .upload-card {
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border: 1px solid var(--border-color);
-            margin-top: 20px;
-        }
-
-        .upload-icon-large { font-size: 4rem; color: var(--btn-blue); margin-bottom: 20px; }
-        .file-input-wrapper {
-            border: 2px dashed var(--border-color);
-            padding: 30px;
-            border-radius: 10px;
-            margin: 20px 0;
-            cursor: pointer;
-        }
-        .file-input-wrapper:hover { border-color: var(--btn-blue); background: rgba(33, 150, 243, 0.05); }
-        
-        .btn-main {
-            background: var(--btn-green); color: white; border: none;
-            padding: 12px 30px; border-radius: 50px; font-weight: bold; font-size: 1rem;
-            cursor: pointer; width: 100%;
-        }
-        .btn-main:hover { transform: scale(1.02); }
-
-    </style>
+<style>
+:root {
+  --bg:#0d1117;
+  --card:#161b22;
+  --text:#fff;
+  --border:#30363d;
+  --blue:#2196f3;
+}
+body {
+  margin:0;
+  font-family:Segoe UI, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+header {
+  background:#1a237e;
+  padding:30px 20px 60px;
+  text-align:center;
+  border-radius:0 0 30px 30px;
+}
+header h1 { margin:10px 0; }
+.info {
+  background:#fff;
+  color:#333;
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:50px;
+  font-size:14px;
+}
+.container {
+  max-width:1000px;
+  margin:-30px auto 40px;
+  padding:0 15px;
+}
+.section-title {
+  font-size:1.4rem;
+  margin:25px 0 15px;
+}
+.table-box {
+  background:var(--card);
+  border-radius:15px;
+  padding:10px;
+  overflow-x:auto;
+  border:1px solid var(--border);
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  min-width:600px;
+}
+th,td {
+  padding:12px;
+  border-bottom:1px solid var(--border);
+  text-align:center;
+}
+th { color:var(--blue); }
+td.title {
+  text-align:left;
+  font-weight:600;
+  cursor:pointer;
+  color:#64b5f6;
+}
+td.title:hover { text-decoration:underline; }
+.btn {
+  background:var(--blue);
+  color:#fff;
+  border:none;
+  padding:6px 14px;
+  border-radius:20px;
+  cursor:pointer;
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="top-bar">
-            <button id="back-btn" class="icon-btn" onclick="goBack()">
-                <i class="fas fa-arrow-left"></i>
+<header>
+  <p>WELCOME</p>
+  <h1>DARK ROOM</h1>
+  <div class="info">
+    its_sandeepkashyap | GEC Bhojpur | 5th CSE ❤️
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="section-title">Semester V – PYQ List</div>
+
+  <div class="table-box">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Course Title</th>
+          <th>Cr.</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>1</td>
+          <td>100508</td>
+          <td class="title"
+            onclick="openPDF('https://drive.google.com/file/d/FILE_ID_1/preview')">
+            Professional Skill Development
+          </td>
+          <td>3</td>
+          <td>
+            <button class="btn"
+              onclick="openPDF('https://drive.google.com/file/d/FILE_ID_1/preview')">
+              View PYQ
             </button>
-            
-            <button class="icon-btn" onclick="toggleTheme()">
-                <i class="fas fa-adjust"></i>
+          </td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>105501</td>
+          <td class="title"
+            onclick="openPDF('https://drive.google.com/file/d/FILE_ID_2/preview')">
+            Artificial Intelligence
+          </td>
+          <td>3</td>
+          <td>
+            <button class="btn"
+              onclick="openPDF('https://drive.google.com/file/d/FILE_ID_2/preview')">
+              View PYQ
             </button>
-        </div>
+          </td>
+        </tr>
 
-        <div class="welcome-section">
-            <p>WELCOME,</p>
-            <h1>DARK ROOM!</h1>
-        </div>
+        <tr>
+          <td>3</td>
+          <td>105502</td>
+          <td class="title"
+            onclick="openPDF('https://drive.google.com/file/d/FILE_ID_3/preview')">
+            Database Management Systems
+          </td>
+          <td>3</td>
+          <td>
+            <button class="btn"
+              onclick="openPDF('https://drive.google.com/file/d/FILE_ID_3/preview')">
+              View PYQ
+            </button>
+          </td>
+        </tr>
 
-        <div class="info-pill">
-            <span>its_sandeepkashyap</span> <span class="divider">|</span>
-            <span>GEC Bhojpur</span> <span class="divider">|</span>
-            <span>5th CSE ❤️</span>
-        </div>
-    </header>
+        <tr>
+          <td>4</td>
+          <td>105503</td>
+          <td class="title"
+            onclick="openPDF('https://drive.google.com/file/d/FILE_ID_4/preview')">
+            Formal Language & Automata Theory
+          </td>
+          <td>4</td>
+          <td>
+            <button class="btn"
+              onclick="openPDF('https://drive.google.com/file/d/FILE_ID_4/preview')">
+              View PYQ
+            </button>
+          </td>
+        </tr>
 
-    <div class="container"><div id="view-dashboard" class="view-section active">
-            
-            <div class="section-header">
-                Quick Actions <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="grid-container">
-                <div class="card horizontal bg-pink" onclick="window.open('https://chat.whatsapp.com/Fo9ADjkdrd7EQ8zYDofmHG', '_blank')">
-                    <i class="fas fa-user-group"></i> Community
-                </div>
-                <div class="card horizontal bg-purple" onclick="window.open('https://gemini.google.com/', '_blank')">
-                    <i class="fas fa-comment-dots"></i> AI Chat
-                </div>
-                <div class="card horizontal bg-orange" onclick="window.open('https://cse-4-thpyq.vercel.app/')">
-                    <i class="fas fa-ticket-alt"></i> 4th SEM
-                </div>
-                <div class="card horizontal bg-green" onclick="window.open('https://bento.me/sandeep-kashyap-', '_blank')">
-                    <i class="fas fa-cloud-upload-alt"></i> Developer
-                </div>
-            </div>
+      </tbody>
+    </table>
+  </div>
 
-            <div class="section-header" style="margin-top: 35px;">Feature Resources</div>
-            <div class="grid-container">
-                <div class="card vertical bg-blue" onclick="window.open('https://drive.google.com/drive/folders/1GW6WBDWMm4IQuPzc3M8n1gfR_UtIUxDO', '_blank')">
-                    <i class="fas fa-layer-group"></i> Syllabus
-                </div>
-                
-                <div class="card vertical bg-purple" onclick="navigateTo('view-pyq')">
-                    <i class="fas fa-file-pen"></i> PYQ
-                </div>
-                
-                <div class="card vertical bg-red" onclick="window.open('https://drive.google.com/drive/folders/1iajkw284kJEjhZ5nzHkERNaGm1jeZc4K', '_blank')">
-                    <i class="fas fa-file-alt"></i> Notes
-                </div>
-                
-                <div class="card vertical bg-green" onclick="window.open('http://www.beu-bih.ac.in', '_blank')">
-                    <i class="fas fa-chart-bar"></i> Result
-                </div>
-            </div>
-        </div>
+</div>
 
-        <div id="view-pyq" class="view-section">
-            <div class="section-header">Semester V - Course List</div>
-            
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Code</th>
-                            <th>Course Title</th>
-                            <th>Cr.</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td> <td>100508</td> <td>Professional Skill Development</td> <td>3</td>
-                            <td><button class="upload-btn-sm" onclick="openUpload('Professional Skill Development', '100508')">Upload</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td> <td>105501</td> <td>Artificial Intelligence</td> <td>3</td>
-                            <td><button class="upload-btn-sm" onclick="openUpload('Artificial Intelligence', '105501')">Upload</button></td>
-                        </tr>
-                        <tr>
-                            <td>3</td> <td>105502</td> <td>Database Management Systems</td> <td>3</td>
-                            <td><button class="upload-btn-sm" onclick="openUpload('Database Management Systems', '105502')">Upload</button></td>
-                        </tr>
-                        <tr>
-                            <td>4</td> <td>105503</td> <td>Formal Language & Automata Theory</td> <td>4</td>
-                            <td><button class="upload-btn-sm" onclick="openUpload('Formal Language & Automata', '105503')">Upload</button></td>
-                        </tr>
-                        <tr>
-                            <td>5</td> <td>105504</td> <td>Software Engineering</td> <td>3</td>
-                            <td><button class="upload-btn-sm" onclick="openUpload('Software Engineering', '105504')">Upload</button></td>
-                        </tr><tr>
-                            <td>6</td> <td>105505</td> <td>Seminar</td> <td>1</td>
-                            <td><button class="upload-btn-sm" onclick="openUpload('Seminar', '105505')">Upload</button></td>
-                        </tr>
-                        <tr>
-                            <td>7</td> <td>100511P</td> <td>NPTEL Courses-1</td> <td>2</td>
-                            <td><button class="upload-btn-sm" onclick="openUpload('NPTEL Courses', '100511P')">Upload</button></td>
-                        </tr>
-                         <tr>
-                            <td>8</td> <td>105502P</td> <td>DBMS Lab</td> <td>2</td>
-                            <td><button class="upload-btn-sm" onclick="openUpload('DBMS Lab', '105502P')">Upload</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<script>
+function openPDF(link){
+  window.open(link, '_blank');
+}
+</script>
 
-        <div id="view-upload" class="view-section">
-            <div class="upload-card">
-                <i class="fas fa-cloud-upload-alt upload-icon-large"></i>
-                <h2 id="upload-subject-title" style="margin-bottom: 10px;">Upload File</h2>
-                <p id="upload-course-code" style="color: var(--text-muted); margin-bottom: 20px;">Code: 100508</p>
-                
-                <div class="file-input-wrapper">
-                    <i class="fas fa-file-pdf" style="font-size: 2rem; color: #777;"></i>
-                    <p style="margin-top: 10px;">Click to Browse or Drag File Here</p>
-                    <input type="file" style="opacity: 0; position: absolute; width: 100%; height: 100%; cursor: pointer;">
-                </div>
-
-                <button class="btn-main" onclick="alert('File successfully sent to server!')">
-                    SUBMIT PYQ
-                </button>
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        // 1. Theme Logic
-        function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-            localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
-        }
-        // Load theme on start
-        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-theme');
-
-
-        // 2. Navigation Logic (SPA)
-        // Keep track of history to know where "Back" button goes
-        let historyStack = ['view-dashboard'];
-
-        function navigateTo(viewId) {
-            // Hide all views
-            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-            // Show target view
-            document.getElementById(viewId).classList.add('active');
-            
-            // Manage History & Back Button
-            if (viewId !== 'view-dashboard') {
-                document.getElementById('back-btn').style.visibility = 'visible';
-                // Don't push duplicates if we are just moving forward normally
-                if(historyStack[historyStack.length - 1] !== viewId) {
-                    historyStack.push(viewId);
-                }
-            } else {
-                document.getElementById('back-btn').style.visibility = 'hidden';
-                historyStack = ['view-dashboard']; // Reset stack
-            }
-            
-            // Scroll to top
-            window.scrollTo(0,0);
-        }
-
-        function goBack() {
-            if (historyStack.length > 1) {
-                historyStack.pop(); // Remove current page
-                const previousPage = historyStack[historyStack.length - 1];
-                navigateTo(previousPage);
-            } else {
-                navigateTo('view-dashboard');
-            }
-        }
-
-        // 3. Upload Page Logic
-        function openUpload(subjectName, courseCode) {
-            // Update the text in the upload pagedocument.getElementById('upload-subject-title').innerText = subjectName;
-            document.getElementById('upload-course-code').innerText = "Course Code: " + courseCode;
-            // Switch to upload view
-            navigateTo('view-upload');
-        }
-
-    </script>
 </body>
 </html>
-
-
-
