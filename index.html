@@ -3,32 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Portal - PYQ</title>
+<title>Student Portal - All In One</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 :root {
   --bg:#0d1117;
+  --header:#1a237e;
   --card:#161b22;
   --text:#fff;
   --border:#30363d;
+  --pink:#e91e63;
+  --purple:#7c4dff;
+  --orange:#ff9800;
+  --green:#4caf50;
   --blue:#2196f3;
+  --red:#f44336;
 }
+
 body {
   margin:0;
   font-family:Segoe UI, sans-serif;
   background:var(--bg);
   color:var(--text);
 }
+
+/* HEADER */
 header {
-  background:#1a237e;
-  padding:30px 20px 60px;
+  background:var(--header);
+  padding:25px 20px 60px;
   text-align:center;
   border-radius:0 0 30px 30px;
 }
-header h1 { margin:10px 0; }
-.info {
+header h1 { margin:8px 0 15px; }
+
+.info-pill {
   background:#fff;
   color:#333;
   display:inline-block;
@@ -36,21 +46,57 @@ header h1 { margin:10px 0; }
   border-radius:50px;
   font-size:14px;
 }
+
+/* LAYOUT */
 .container {
   max-width:1000px;
   margin:-30px auto 40px;
   padding:0 15px;
 }
+
 .section-title {
-  font-size:1.4rem;
   margin:25px 0 15px;
+  font-size:1.3rem;
+  font-weight:700;
 }
+
+/* CARDS */
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+@media(min-width:768px){
+  .grid { grid-template-columns:repeat(4,1fr); }
+}
+
+.card {
+  padding:15px;
+  border-radius:16px;
+  color:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-weight:600;
+}
+.card i { font-size:1.4rem; }
+
+.bg-pink{background:var(--pink)}
+.bg-purple{background:var(--purple)}
+.bg-orange{background:var(--orange)}
+.bg-green{background:var(--green)}
+.bg-blue{background:var(--blue)}
+.bg-red{background:var(--red)}
+
+/* TABLE */
 .table-box {
   background:var(--card);
   border-radius:15px;
   padding:10px;
-  overflow-x:auto;
   border:1px solid var(--border);
+  overflow-x:auto;
 }
 table {
   width:100%;
@@ -63,13 +109,15 @@ th,td {
   text-align:center;
 }
 th { color:var(--blue); }
+
 td.title {
   text-align:left;
   font-weight:600;
-  cursor:pointer;
   color:#64b5f6;
+  cursor:pointer;
 }
 td.title:hover { text-decoration:underline; }
+
 .btn {
   background:var(--blue);
   color:#fff;
@@ -85,15 +133,50 @@ td.title:hover { text-decoration:underline; }
 
 <header>
   <p>WELCOME</p>
-  <h1>DARK ROOM</h1>
-  <div class="info">
+  <h1>DARK ROOM!</h1>
+  <div class="info-pill">
     its_sandeepkashyap | GEC Bhojpur | 5th CSE ❤️
   </div>
 </header>
 
 <div class="container">
 
-  <div class="section-title">Semester V – PYQ List</div>
+  <!-- QUICK ACTIONS -->
+  <div class="section-title">Quick Actions</div>
+  <div class="grid">
+    <div class="card bg-pink" onclick="window.open('https://chat.whatsapp.com/Fo9ADjkdrd7EQ8zYDofmHG','_blank')">
+      <i class="fas fa-user-group"></i> Community
+    </div>
+    <div class="card bg-purple" onclick="window.open('https://gemini.google.com/','_blank')">
+      <i class="fas fa-comment-dots"></i> AI Chat
+    </div>
+    <div class="card bg-orange" onclick="window.open('https://cse-4-thpyq.vercel.app/','_blank')">
+      <i class="fas fa-ticket-alt"></i> 4th SEM
+    </div>
+    <div class="card bg-green" onclick="window.open('https://bento.me/sandeep-kashyap-','_blank')">
+      <i class="fas fa-cloud-upload-alt"></i> Developer
+    </div>
+  </div>
+
+  <!-- FEATURE RESOURCES -->
+  <div class="section-title">Feature Resources</div>
+  <div class="grid">
+    <div class="card bg-blue" onclick="window.open('https://drive.google.com/drive/folders/1GW6WBDWMm4IQuPzc3M8n1gfR_UtIUxDO','_blank')">
+      <i class="fas fa-layer-group"></i> Syllabus
+    </div>
+    <div class="card bg-purple" onclick="document.getElementById('pyq').scrollIntoView({behavior:'smooth'})">
+      <i class="fas fa-file-pen"></i> PYQ
+    </div>
+    <div class="card bg-red" onclick="window.open('https://drive.google.com/drive/folders/1iajkw284kJEjhZ5nzHkERNaGm1jeZc4K','_blank')">
+      <i class="fas fa-file-alt"></i> Notes
+    </div>
+    <div class="card bg-green" onclick="window.open('http://www.beu-bih.ac.in','_blank')">
+      <i class="fas fa-chart-bar"></i> Result
+    </div>
+  </div>
+
+  <!-- PYQ TABLE -->
+  <div id="pyq" class="section-title">Semester V – PYQ</div>
 
   <div class="table-box">
     <table>
@@ -111,65 +194,31 @@ td.title:hover { text-decoration:underline; }
         <tr>
           <td>1</td>
           <td>100508</td>
-          <td class="title"
-            onclick="openPDF('https://drive.google.com/file/d/FILE_ID_1/preview')">
+          <td class="title" onclick="openPDF('https://drive.google.com/file/d/FILE_ID_1/preview')">
             Professional Skill Development
           </td>
           <td>3</td>
-          <td>
-            <button class="btn"
-              onclick="openPDF('https://drive.google.com/file/d/FILE_ID_1/preview')">
-              View PYQ
-            </button>
-          </td>
+          <td><button class="btn" onclick="openPDF('https://drive.google.com/file/d/FILE_ID_1/preview')">View PYQ</button></td>
         </tr>
 
         <tr>
           <td>2</td>
           <td>105501</td>
-          <td class="title"
-            onclick="openPDF('https://drive.google.com/file/d/FILE_ID_2/preview')">
+          <td class="title" onclick="openPDF('https://drive.google.com/file/d/FILE_ID_2/preview')">
             Artificial Intelligence
           </td>
           <td>3</td>
-          <td>
-            <button class="btn"
-              onclick="openPDF('https://drive.google.com/file/d/FILE_ID_2/preview')">
-              View PYQ
-            </button>
-          </td>
+          <td><button class="btn" onclick="openPDF('https://drive.google.com/file/d/FILE_ID_2/preview')">View PYQ</button></td>
         </tr>
 
         <tr>
           <td>3</td>
           <td>105502</td>
-          <td class="title"
-            onclick="openPDF('https://drive.google.com/file/d/FILE_ID_3/preview')">
+          <td class="title" onclick="openPDF('https://drive.google.com/file/d/FILE_ID_3/preview')">
             Database Management Systems
           </td>
           <td>3</td>
-          <td>
-            <button class="btn"
-              onclick="openPDF('https://drive.google.com/file/d/FILE_ID_3/preview')">
-              View PYQ
-            </button>
-          </td>
-        </tr>
-
-        <tr>
-          <td>4</td>
-          <td>105503</td>
-          <td class="title"
-            onclick="openPDF('https://drive.google.com/file/d/FILE_ID_4/preview')">
-            Formal Language & Automata Theory
-          </td>
-          <td>4</td>
-          <td>
-            <button class="btn"
-              onclick="openPDF('https://drive.google.com/file/d/FILE_ID_4/preview')">
-              View PYQ
-            </button>
-          </td>
+          <td><button class="btn" onclick="openPDF('https://drive.google.com/file/d/FILE_ID_3/preview')">View PYQ</button></td>
         </tr>
 
       </tbody>
@@ -180,7 +229,7 @@ td.title:hover { text-decoration:underline; }
 
 <script>
 function openPDF(link){
-  window.open(link, '_blank');
+  window.open(link,'_blank');
 }
 </script>
 
